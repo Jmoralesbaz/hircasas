@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-10 card">
+        <div class="card-body">
+           
+            <h3 class="text-end">Personas</h3>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <div *ngIf="code>0" class="alert alert-{{classalert}}" role="alert">
+                        {{message}}
+                       </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-3">Edici&oacute;n de Persona</h4>
+                            <form [formGroup]="form" class="needs-validation">
+                                <input type="hidden" formControlName="id" value="{{model.id}}">
+                                <input type="hidden" formControlName="asset" value="{{model.asset}}">
+                                <div class="row g-3">
+                                    <div class="col-sm-6">
+                                        <label for="firstName" class="form-label">Nombre</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="name" type="text" class="form-control" id="firstName" placeholder="Nombre"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="lastName" class="form-label">Apellidos</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="lastName"  type="text" class="form-control" id="uselastNamername"
+                                                placeholder="Apellidos" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="email" class="form-label">Correo</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">@</span>
+                                            <input formControlName="email"  type="text" class="form-control" id="email" placeholder="Correo"
+                                                required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-4">
+
+                                <button class="w-100 btn btn-outline-primary btn-lg my-2" (click)="save()" [disabled]="!form.valid" type="submit">Guardar</button>
+                                <button class="w-100 btn btn-outline-secondary btn-lg my-2" (click)="reset()" type="reset">Cancelar</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="row">
+                     <app-filterlist></app-filterlist>
+                        <div class="col-12">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellidos</th>
+                                        <th scope="col">Correo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <ng-container *ngFor="let row of list;let i = index;">
+                                        <tr>
+                                            <th scope="row">{{row.id}}</th>
+                                            <td>{{row.name}}</td>
+                                            <td>{{row.lastName}}</td>
+                                            <td>{{row.email}}</td>
+                                            <td class="text-center">
+                                                <span (click)="edit(i)" class="text-warning pointer"> 
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

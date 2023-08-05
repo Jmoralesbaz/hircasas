@@ -1,0 +1,37 @@
+main {
+  
+    flex-wrap: nowrap;
+    height: 100vh !important;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100% !important;
+  }
+  .side-Nav{
+    height:  100vh !important;
+    a{
+      color: white !important;
+    }
+  }
+  .sidNavCol{
+    flex: 0 0 auto;
+    width: 280px;
+  }
+  .container-fixed{
+    flex: 0 0 auto;
+    width: calc(100% - 280px);
+  }
+  nav{
+    a{
+        color: white !important;
+    }
+  }
+  .containerdetail{
+    height: calc(100vh - 60px);
+    color: #6c757d !important;
+    a,li,ol{
+      color: #6c757d !important;
+      font-weight: 500 !important;
+    }
+  }

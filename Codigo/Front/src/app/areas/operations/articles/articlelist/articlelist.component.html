@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+    <div class="col-10 card">
+        <div class="card-body">
+           
+            <h3 class="text-end">Articulos</h3>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <div *ngIf="code>0" class="alert alert-{{classalert}}" role="alert">
+                        {{message}}
+                       </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-3">Edici&oacute;n de Articulo</h4>
+                            <form [formGroup]="form" class="needs-validation">
+                                <input type="hidden" formControlName="id" value="{{model.id}}">
+                                <input type="hidden" formControlName="asset" value="{{model.asset}}">
+                                <div class="row g-3">
+                                    <div class="col-sm-12">
+                                        <label for="item" class="form-label">Articulo</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="item1" type="text" class="form-control" id="firstName" placeholder="Articulo"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="price" class="form-label">Precio</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="price"  type="text" class="form-control" id="price"
+                                                placeholder="Apellidos" >
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="stock" class="form-label">Stock</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="stock"  type="text" class="form-control" id="stock"
+                                                placeholder="Apellidos" >
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <hr class="my-4">
+
+                                <button class="w-100 btn btn-outline-primary btn-lg my-2" (click)="save()" [disabled]="!form.valid" type="submit">Guardar</button>
+                                <button class="w-100 btn btn-outline-secondary btn-lg my-2" (click)="reset()" type="reset">Cancelar</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="row">
+                     <app-filterlist></app-filterlist>
+                        <div class="col-12">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Articulo</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <ng-container *ngFor="let row of list;let i = index;">
+                                        <tr>
+                                            <th scope="row">{{row.id}}</th>
+                                            <td>{{row.item1}}</td>
+                                            <td>{{row.price | currency}}</td>
+                                            <td>{{row.stock}}</td>
+                                            <td class="text-center">
+                                                <span (click)="edit(i)" class="text-warning pointer"> 
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

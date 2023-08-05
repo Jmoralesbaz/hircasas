@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+    <div class="col-10 card">
+        <div class="card-body">
+           
+            <h3 class="text-end">Stock</h3>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <div *ngIf="code>0" class="alert alert-{{classalert}}" role="alert">
+                        {{message}}
+                       </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-3">Edici&oacute;n de Stock</h4>
+                            <form [formGroup]="form" class="needs-validation">
+                                <div class="row g-3">
+                                    <div class="col-sm-12">
+                                        <label for="frmItem" class="form-label">Articulo</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <select class="form-select " formControlName="item">
+                                                <option value="0">Selecciona un Articulo</option>
+                                                <option *ngFor="let p of lstItem;" value="{{p.id}}">{{p.item1}}</option>                                       
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label for="frmQuantity" class="form-label">Cantidad</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="quantity" type="text" class="form-control" id="frmQuantity" placeholder="Nombre"
+                                                required>
+                                        </div>
+                                    </div>   
+                                    <div class="col-sm-7">
+                                        <label for="frmdate" class="form-label">Fecha Compra</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="checkIn" type="date" value="model.checkIn" class="form-control" id="frmdate"  placeholder="fecha"
+                                                required>
+                                        </div>
+                                    </div>                                                                     
+                                </div>
+                                <hr class="my-4">
+
+                                <button class="w-100 btn btn-outline-primary btn-lg my-2" (click)="save()" [disabled]="!form.valid " type="submit">Guardar</button>
+                                <button class="w-100 btn btn-outline-secondary btn-lg my-2" (click)="reset()" type="reset">Cancelar</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="row">
+                     <app-filterlist></app-filterlist>
+                        <div class="col-12">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        
+                                        <th scope="col">Articulo</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Fecha</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <ng-container *ngFor="let row of list;let i = index;">
+                                        <tr>
+                                            
+                                            <td>{{getNameItem(row.item)}}</td>
+                                            <td>{{row.quantity}}</td>
+                                            <td>{{row.checkIn | date:'yyyy-mm-dd'}}</td>
+                                            
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

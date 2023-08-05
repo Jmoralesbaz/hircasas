@@ -1,0 +1,25 @@
+<form [formGroup]="form" >
+    <div class="row g-3">
+        <div class="col-sm-12 text-start">
+            <label for="user" class="form-label"><strong>Usuario</strong></label>
+            <div class="input-group has-validation">
+                <span class="input-group-text">#</span>
+                <input formControlName="user"  type="text" class="form-control" id="user"
+                    placeholder="Usuario" >
+            </div>
+        </div>
+        <div class="col-sm-12 text-start">
+            <label for="contraseña" class="form-label"><strong>Contrase&ntilde;a</strong></label>
+            <div class="input-group has-validation">
+                <span class="input-group-text">#</span>
+                <input formControlName="password"  type="password" class="form-control" id="contraseña"
+                    placeholder="Contraseña" >
+            </div>
+        </div>
+        <div *ngIf="code>0" class="alert alert-{{classalert}}" role="alert">
+            {{message}}
+           </div>
+        <hr class="my-4">
+        <button class="w-100 btn btn-outline-primary btn-lg my-2" (click)="save()" [disabled]="!form.valid" type="submit">Acceder</button>
+    </div>
+</form>

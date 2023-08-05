@@ -1,0 +1,176 @@
+<div class="row justify-content-center">
+    <div class="col-11 card">
+        <div class="card-body">
+
+            <h3 class="text-end">Facturacion</h3>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <div *ngIf="code>0" class="alert alert-{{classalert}}" role="alert">
+                        {{message}}
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-3">Edici&oacute;n de Factura</h4>
+                            <form [formGroup]="form" class="needs-validation">
+                                <input type="hidden" formControlName="asset" value="{{model.folio}}">
+                                <div class="row g-3">
+                                    <div class="col-sm-12">
+                                        <label for="firstName" class="form-label">Venta</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <select class="form-select " formControlName="sale">
+                                                <option value="0">Selecciona una Venta</option>
+                                                <option *ngFor="let p of listSelect;" value="{{p.id}}">{{p.id}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="Rfc" class="form-label">Rfc</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="rfc" type="text" class="form-control" id="Rfc"
+                                                placeholder="Rfc">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="Rfc" class="form-label">Cp</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="codigoPostal" type="text" class="form-control"
+                                                id="Cp" placeholder="Codigo Postal">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Rfc" class="form-label">Rozon Social</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <input formControlName="razonSocial" type="text" class="form-control"
+                                                id="Cp" placeholder="Rozon Social">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Rfc" class="form-label">Regimen Fiscal</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <select class="form-select " formControlName="regimenFiscal">
+                                                <option value="601">General de Ley Personas Morales</option>
+                                                <option value="603">Personas Morales con Fines no Lucrativos</option>
+                                                <option value="605">Sueldos y Salarios e Ingresos Asimilados a Salarios
+                                                </option>
+                                                <option value="606">Arrendamiento</option>
+                                                <option value="608">Demás ingresos</option>
+                                                <option value="609">Consolidación</option>
+                                                <option value="610">Residentes en el Extranjero sin Establecimiento
+                                                    Permanente en México</option>
+                                                <option value="611">Ingresos por Dividendos (socios y accionistas)
+                                                </option>
+                                                <option value="612">Personas Físicas con Actividades Empresariales y
+                                                    Profesionales</option>
+                                                <option value="614">Ingresos por intereses</option>
+                                                <option value="616">Sin obligaciones fiscales</option>
+                                                <option value="620">Sociedades Cooperativas de Producción que optan por
+                                                    diferir sus ingresos</option>
+                                                <option value="621">Incorporación Fiscal</option>
+                                                <option value="622">Actividades Agrícolas, Ganaderas, Silvícolas y
+                                                    Pesqueras</option>
+                                                <option value="623">Opcional para Grupos de Sociedades</option>
+                                                <option value="624">Coordinados</option>
+                                                <option value="628">Hidrocarburos</option>
+                                                <option value="607">Régimen de Enajenación o Adquisición de Bienes
+                                                </option>
+                                                <option value="629">De los Regímenes Fiscales Preferentes y de las
+                                                    Empresas Multinacionales</option>
+                                                <option value="630">Enajenación de acciones en bolsa de valores</option>
+                                                <option value="615">Régimen de los ingresos por obtención de premios
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Rfc" class="form-label">Uso Cfdi</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">#</span>
+                                            <select class="form-select " formControlName="usoCfdi">
+                                                <option value="G01">(G01) - Adquisición de mercancías</option>
+                                                <option value="G02">(G02) - Devoluciones, descuentos o bonificaciones</option>
+                                                <option value="G03">(G03) - Gastos en general</option>
+                                                <option value="I01">(I01) - Construcciones</option>
+                                                <option value="I02">(I02) - Mobiliario y equipo de oficina por inversiones</option>
+                                                <option value="I03">(I03) - Equipo de transporte</option>
+                                                <option value="I04">(I04) - Equipo de cómputo y accesorios</option>
+                                                <option value="I05">(I05) - Dados, troqueles, moldes, matrices y herramental</option>
+                                                <option value="I06">(I06) - Comunicaciones telefónicas</option>
+                                                <option value="I07">(I07) - Comunicaciones satelitales</option>
+                                                <option value="I08">(I08) - Otra maquinaria y equipo</option>
+                                                <option value="D01">(D01) - Honorarios médicos, dentales y gastos hospitalarios.</option>
+                                                <option value="D02">(D02) - Gastos médicos por incapacidad o discapacidad</option>
+                                                <option value="D03">(D03) - Gastos funerales.</option>
+                                                <option value="D04">(D04) - Donativo</option>
+                                                <option value="D05">(D05) - Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación).</option>
+                                                <option value="D06">(D06) - Aportaciones voluntarias al SAR.</option>
+                                                <option value="D07">(D07) - Primas por seguros de gastos médicos. </option>
+                                                <option value="D08">(D08) - Gastos de transportación escolar obligatoria.</option>
+                                                <option value="D09">(D09) - Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones.</option>
+                                                <option value="D10">(D10) - Pagos por servicios educativos (colegiaturas)</option>
+                                                <option value="CP01">(CP01) - Pagos</option>
+                                                <option value="CN01">(CN01) - Nómina</option>
+                                                <option value="S01">(S01) - Sin Efectos Fiscales</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <hr class="my-4">
+
+                                <button class="w-100 btn btn-outline-primary btn-lg my-2" (click)="save()"
+                                    [disabled]="!form.valid" type="submit">Guardar</button>
+                                <button class="w-100 btn btn-outline-secondary btn-lg my-2" (click)="reset()"
+                                    type="reset">Cancelar</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <app-filterlist></app-filterlist>
+                        <div class="col-12">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">UUID</th>
+                                        <th scope="col">Venta</th>
+                                        <th scope="col">Rfc</th>
+                                        <th scope="col">Razon social</th>
+                                        <th scope="col">Regimen Fiscal</th>
+                                        <th scope="col">Uso Cfdi</th>
+                                        <th scope="col">CP</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <ng-container *ngFor="let row of list;let i = index;">
+                                        <tr>
+                                            <th scope="row">{{row.folio}}</th>
+                                            <th scope="row">{{row.sale}}</th>
+                                            <th scope="row">{{row.rfc}}</th>
+                                            <th scope="row">{{row.razonSocial}}</th>
+                                            <th scope="row">{{row.regimenFiscal}}</th>
+                                            <th scope="row">{{row.usoCfdi}}</th>
+                                            <th scope="row">{{row.codigoPostal}}</th>
+                                            <td class="text-center">
+                                                <span (click)="edit(i)" class="text-warning pointer"> 
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
